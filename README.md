@@ -1,4 +1,4 @@
-# ochre-ui
+# Webcomponent tests
 
 Experiments with web components, exploring different approaches:
 
