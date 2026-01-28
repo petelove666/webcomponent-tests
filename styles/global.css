@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(var(--ui-background, 255,255,255));
+    color: rgb(var(--ui-text, 0,0,0));
+    line-height: 1.25;
+    margin: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: rgb(var(--ui-text, 0,0,0));
+}

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ochre</title>
+    <link rel="stylesheet" href="./theme/theme.css" />
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./components/client-side/oc-input-extend/style.css" />
+    <script type="module" src="./components/index.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Ochre test</h1>
+    </header>
+    <main class="main">
+      <h3>Popover component</h3>
+      <oc-textinput>
+        <button popovertarget="my-popover">Open Popover</button>
+        <oc-popover popover="auto" id="my-popover">
+          This is my popover content!
+        </oc-popover>
+      </oc-textinput>
+
+      <oc-quote author="Mr Lorem">
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat"
+        </p>
+      </oc-quote>
+      <p>
+        <button id="btn6">Add Animation to an instance of oc-quote</button>
+      </p>
+      <p>
+        <button id="btn7">Remove Animation from an instance of oc-quote</button>
+      </p>
+      <oc-quote is-animated>
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat"
+        </p>
+      </oc-quote>
+      <oc-button variant="primary" type="button">Send</oc-button>
+      <oc-button variant="secondary" type="link" href="javascript:void(0);"
+        >JS</oc-button
+      >
+      <oc-button
+        id="linkedin-button"
+        variant="secondary"
+        type="link"
+        href="https://linkedin.com/in/petelove"
+        >LinkedIn</oc-button
+      >
+      <form id="form">
+        <h2>[oc-text-input] - Inputs rendered in shadow DOM</h2>
+        <oc-text-input
+          prefix="email"
+          type="email"
+          id="test1ps"
+          label="Email"
+          name="oc-input1ps"
+          value=""
+        ></oc-text-input>
+        <oc-text-input
+          prefix="pound"
+          type="number"
+          id="test1p"
+          label="Enter amount"
+          name="oc-input1p"
+          value=""
+        ></oc-text-input>
+        <oc-text-input
+          id="test1dd"
+          label="test label"
+          placeholder="You may fill this in"
+          name="oc-input1dd"
+          value=""
+        ></oc-text-input>
+        <oc-text-input
+          id="test1"
+          label="Test label"
+          placeholder="You must fill this in"
+          name="oc-input"
+          value=""
+          required
+        ></oc-text-input>
+        <p><button id="btn">Populate an instance of oc-text-input</button></p>
+        <oc-text-input
+          invalid
+          label="Test label invalid"
+          name="oc-input2"
+          value="xx"
+        ></oc-text-input>
+        <p>
+          <button id="btn2">Populate another instance of oc-text-input</button>
+        </p>
+        <p>
+          <button id="btn5">Reset value of an instance of oc-text-input</button>
+        </p>
+        <p><button id="btn3">Disable an instance of oc-text-input</button></p>
+        <p><button id="btn4">Enable an instance of oc-text-input</button></p>
+        <p>
+          <button id="btn8">
+            Console log if specific instance of oc-text-input is disabled
+          </button>
+        </p>
+        <hr />
+        <h2>
+          [oc-textinput] - Regular text inputs slotted into a component-rendered
+          Shadow DOM
+        </h2>
+        <oc-textinput id="mytest" invalid>
+          <label for="input-fieldx" slot="label"
+            >Slotted label and input field:</label
+          >
+          <input
+            type="text"
+            id="input-fieldx"
+            name="input-fieldx"
+            placeholder="oc-textinputx"
+          />
+        </oc-textinput>
+        <oc-textinput id="mytest2">
+          <label for="input-fieldy" slot="label"
+            >Slotted label and input field autofocus attribute on input:</label
+          >
+          <input
+            type="text"
+            id="input-fieldy"
+            name="input-fieldy"
+            placeholder="oc-textinputy"
+            autofocus
+          />
+        </oc-textinput>
+        <p>
+          <button id="btn9">
+            Set required attribute on an instance of oc-textinput
+          </button>
+        </p>
+
+        <oc-textinput id="mytest28" prefix="pound">
+          <label for="input-fieldy8" slot="label"
+            >Slotted label and input field with prefix attribute set on
+            component</label
+          >
+          <input
+            type="text"
+            id="input-fieldy8"
+            name="input-fieldy8"
+            placeholder="oc-textinputy8"
+          />
+        </oc-textinput>
+        <p>
+          <button id="btn11">
+            Remove prefix from an instance of oc-textinput (should break
+            styling)
+          </button>
+          This breaks styling as the width is based on the prescence of the
+          prefix attribute, but removing the prefix attribute does not remove
+          the actual prefix as the component intentionally does not observe that
+          attribute (as prefix would never dynamically change).
+        </p>
+
+        <oc-textinput id="mytest29" invalid>
+          <label for="input-fieldy9" slot="label"
+            >Slotted label and input field with invalid attribute set on
+            component:</label
+          >
+          <input
+            type="text"
+            id="input-fieldy9"
+            name="input-fieldy9"
+            placeholder="oc-textinputy9"
+          />
+        </oc-textinput>
+        <hr />
+        <h2>
+          [oc-text-input-light] - Regular text inputs rendered in light DOM
+          within component
+        </h2>
+        <oc-text-input-light id="mytest3">
+          <label for="input-fieldyy">Label and input field:</label>
+          <input
+            type="text"
+            id="input-fieldyy"
+            name="input-fieldyy"
+            placeholder="oc-textinputyy"
+          />
+        </oc-text-input-light>
+        <p>
+          <button id="btn10">
+            Set required attribute on an instance of oc-text-input-light
+          </button>
+        </p>
+
+        <oc-text-input-light id="mytest333" invalid>
+          <label for="input-fieldy3"
+            >Label and input field with invalid attribute set on
+            component:</label
+          >
+          <input
+            type="text"
+            id="input-fieldy3"
+            name="input-fieldy3"
+            placeholder="oc-textinputy3"
+          />
+        </oc-text-input-light>
+
+        <oc-text-input-light id="mytest3333" prefix="pound">
+          <label for="input-fieldy4"
+            >Label and input field with prefix attribute set on
+            component:</label
+          >
+          <input
+            type="text"
+            id="input-fieldy4"
+            name="input-fieldy4"
+            placeholder="oc-textinputy4"
+          />
+        </oc-text-input-light>
+        <hr />
+        <h2>Regular HTML inputs</h2>
+        <p>
+          <label for="input-field2">Input Field:</label>
+          <input
+            type="text"
+            id="input-field2"
+            name="input-field2"
+            value="my test"
+          />
+        </p>
+        <p><button id="btn2a">Populate regular text input</button></p>
+
+        <p>
+          <label for="input-field2">Number Field:</label>
+          <input type="number" id="input-field2dd" name="input-field2dd" />
+        </p>
+
+        <button type="submit">Submit</button>
+
+        <button type="reset">Reset</button>
+      </form>
+      <hr />
+      <h2>Components with server-side rendered Shadow DOM and CSS</h2>
+      <h3>
+        [oc-button-server] - template &amp; shadow DOM rendered server side
+      </h3>
+      <oc-button-server variant="primary">
+        <template shadowrootmode="open">
+          <style>
+            :host * {
+              box-sizing: border-box;
+            }
+
+            :host([variant="primary"]) .oc-button {
+              --oc-button-bg: var(--primary-background);
+              --oc-button-color: var(--primary-text);
+            }
+
+            :host([variant="primary"]) .oc-button:hover {
+              --oc-button-hover-bg: var(--primary-highlight);
+            }
+
+            :host([variant="secondary"]) .oc-button {
+              --oc-button-bg: var(--secondary-background);
+              --oc-button-color: var(--secondary-text);
+            }
+
+            :host([variant="secondary"]) .oc-button:hover {
+              --oc-button-hover-bg: var(--secondary-highlight);
+            }
+
+            .oc-button {
+              background-color: rgb(var(--oc-button-bg));
+              color: rgb(var(--oc-button-color));
+              border: 2px solid rgb(var(--ui-text));
+              border-radius: 3px;
+              padding: 0.5rem 1rem;
+              text-decoration: none;
+              display: inline-block;
+              text-align: center;
+              min-width: 140px;
+              transition: background-color 0.3s ease, color 0.3s ease;
+              font-size: 1rem;
+              line-height: 1;
+            }
+
+            .oc-button:hover {
+              background-color: rgb(var(--oc-button-hover-bg));
+            }
+
+            button.oc-button {
+              cursor: pointer;
+            }
+          </style>
+          <button class="oc-button"><slot></slot></button>
+        </template>
+        My test
+      </oc-button-server>
+      <hr />
+      <h3>
+        [oc-button-server-hybrid] - conditionally renders template &amp; shadow
+        DOM if not rendered on server
+      </h3>
+      <oc-button-server-hybrid
+        variant="secondary"
+        type="link"
+        href="https://linkedin.com/in/petelove"
+      >
+        <template shadowrootmode="open">
+          <style>
+            :host * {
+              box-sizing: border-box;
+            }
+
+            :host([variant="primary"]) .oc-button {
+              --oc-button-bg: var(--primary-background);
+              --oc-button-color: var(--primary-text);
+            }
+
+            :host([variant="primary"]) .oc-button:hover {
+              --oc-button-hover-bg: var(--primary-highlight);
+            }
+
+            :host([variant="secondary"]) .oc-button {
+              --oc-button-bg: var(--secondary-background);
+              --oc-button-color: var(--secondary-text);
+            }
+
+            :host([variant="secondary"]) .oc-button:hover {
+              --oc-button-hover-bg: var(--secondary-highlight);
+            }
+
+            .oc-button {
+              background-color: rgb(var(--oc-button-bg));
+              color: rgb(var(--oc-button-color));
+              border: 2px solid rgb(var(--ui-text));
+              border-radius: 3px;
+              padding: 0.5rem 1rem;
+              text-decoration: none;
+              display: inline-block;
+              text-align: center;
+              min-width: 140px;
+              transition: background-color 0.3s ease, color 0.3s ease;
+              font-size: 1rem;
+              line-height: 1;
+            }
+
+            .oc-button:hover {
+              background-color: rgb(var(--oc-button-hover-bg));
+            }
+
+            button.oc-button {
+              cursor: pointer;
+            }
+          </style>
+          <button class="oc-button"><slot></slot></button>
+        </template>
+        My test - with shadow template
+      </oc-button-server-hybrid>
+      <oc-button-server-hybrid
+        variant="secondary"
+        type="link"
+        href="https://linkedin.com/in/petelove"
+      >
+        My test - no shadow template
+      </oc-button-server-hybrid>
+
+      <oc-textinput-server id="mytest2s" prefix="pound">
+        <template shadowrootmode="open">
+          <style>
+            :host {
+              width: fit-content;
+              display: block;
+            }
+
+            .input-wrapper {
+              display: flex;
+              align-items: center;
+            }
+
+            ::slotted(label) {
+              display: inline-block;
+              margin-bottom: 0.5rem;
+              font-weight: bold;
+            }
+
+            ::slotted(input) {
+              background-color: rgb(var(--ui-highlight));
+              color: rgb(var(--ui-text));
+              border-style: solid;
+              border-width: 2px;
+              border-top-right-radius: var(--border-radius-default);
+              border-bottom-right-radius: var(--border-radius-default);
+              padding: 0.5rem;
+              font-size: 1rem;
+              line-height: 1.25;
+            }
+
+            ::slotted(input[aria-invalid="true"]) {
+              border-color: rgb(var(--error-text));
+            }
+
+            ::slotted(input:not(input[aria-invalid="true"])) {
+              border-color: rgb(var(--ui-text));
+            }
+
+            .required-indicator {
+              display: inline-block;
+              margin-left: 0.25rem;
+              font-size: 0.75rem;
+              font-style: italic;
+            }
+
+            :host(:not([prefix])) ::slotted(input) {
+              width: 20rem;
+              border-top-left-radius: var(--border-radius-default);
+              border-bottom-left-radius: var(--border-radius-default);
+            }
+
+            :host([prefix]) ::slotted(input) {
+              width: 18rem;
+            }
+
+            .prefix {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              align-self: stretch;
+              width: 2rem;
+              background-color: rgb(var(--primary-background));
+              color: rgb(var(--primary-text));
+              border-style: solid;
+              border-width: 2px 0 2px 2px;
+              border-top-left-radius: var(--border-radius-default);
+              border-bottom-left-radius: var(--border-radius-default);
+              border-color: rgb(var(--ui-text));
+            }
+
+            .prefix--pound:before {
+              content: "£";
+            }
+
+            .prefix--email:before {
+              content: "@";
+            }
+
+            ::slotted(input:focus) {
+              outline: 3px solid rgb(var(--primary-highlight));
+            }
+
+            ::slotted(input:disabled) {
+              background-color: rgba(var(--ui-highlight), 0.5);
+              cursor: not-allowed;
+            }
+          </style>
+          <slot name="label"></slot>
+          <div class="input-wrapper">
+            <slot></slot>
+          </div>
+        </template>
+        <label for="input-fieldys" slot="label"
+          >Slotted label and input field - server component</label
+        >
+        <input
+          type="text"
+          id="input-fieldys"
+          name="input-fieldys"
+          placeholder="oc-textinputys"
+        />
+      </oc-textinput-server>
+      <hr />
+      <h2>[oc-input-extend] - Extended &lt;input&gt; element</h2>
+      <input is="oc-input-extend" id="one" type="number" disabled />
+      <input is="oc-input-extend" id="two" type="number" prefix="pound" />
+      <input
+        is="oc-input-extend"
+        id="three"
+        type="number"
+        prefix="email"
+        required
+      />
+
+      <h3>
+        Data fetched and manipulated by app and passed to generic table web
+        component [oc-table] to render
+      </h3>
+
+      <oc-table id="myTable2"></oc-table>
+      <oc-table id="myTable"></oc-table>
+
+      <h3>
+        Data fetched by web component wrapper [oc-data-starwars] and passed to
+        generic table web component [oc-table] to be rendered
+      </h3>
+      <oc-data-starwars id="myDataCharacter" number="2">
+        <oc-table data-id="oc-data-target"></oc-table>
+      </oc-data-starwars>
+
+      <h3>
+        Data fetched by web component wrapper [oc-data-starwars] and passed to
+        specific table web component [oc-table-starwars] to be rendered
+      </h3>
+      <oc-data-starwars number="3">
+        <oc-table-starwars data-id="oc-data-target"></oc-table-starwars>
+      </oc-data-starwars>
+      <oc-data-starwars number="3" type="planets">
+        <oc-table-starwars data-id="oc-data-target"></oc-table-starwars>
+      </oc-data-starwars>
+
+      <h3>
+        Data fetched and manipulated by web component wrapper [oc-data-starwars]
+        and passed to list web component [oc-list] to be rendered
+      </h3>
+
+      <oc-data-starwars id="myDataCharacter" number="1" type="planets">
+        <oc-list data-id="oc-data-target"></oc-list>
+      </oc-data-starwars>
+
+      <oc-data-starwars id="myDataCharacter" data-id="3">
+        <oc-list data-id="oc-data-target"></oc-list>
+      </oc-data-starwars>
+    </main>
+
+    <script>
+      async function fetchCharacterData(id) {
+        console.log("Fetching character data...");
+        const abortController = new AbortController();
+        const signal = abortController.signal;
+
+        try {
+          const fetchPromises = [];
+          for (let i = 1; i <= 5; i++) {
+            fetchPromises.push(
+              fetch(`https://swapi.dev/api/people/${i}`, { signal })
+            );
+          }
+
+          // 3. Use Promise.allSettled to handle individual failures
+          const results = await Promise.allSettled(fetchPromises);
+          console.log("results:", results);
+
+          const charactersRaw = [];
+          for (const result of results) {
+            if (result.status === "fulfilled") {
+              const response = result.value;
+              // 4. Check for HTTP errors (like 404)
+              if (response.ok) {
+                const json = await response.json();
+                charactersRaw.push(json);
+              } else {
+                console.warn(
+                  `Failed to fetch a character: ${response.statusText}`
+                );
+              }
+            } else {
+              // This catches network errors or aborted fetches
+              if (result.reason.name !== "AbortError") {
+                console.error("Fetch error:", result.reason);
+              }
+            }
+          }
+
+          // 5. Filter and set data on the target
+          const filteredData = charactersRaw.map(
+            ({ created, edited, ...rest }) => rest
+          );
+
+          const target = document.getElementById(id);
+          if (target) {
+            target.data = filteredData;
+          } else {
+            console.warn("No target element found.");
+          }
+        } catch (error) {
+          // This will only catch errors if Promise.all is used, but good practice
+          if (error.name !== "AbortError") {
+            console.error("An unexpected error occurred:", error);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchCharacterData("myTable");
+        const form = document.getElementById("form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          for (const [name, value] of data) {
+            console.log(name, ":", value);
+          }
+        });
+
+        form.addEventListener("reset", function (e) {
+          // e.preventDefault();
+          const data = new FormData(form);
+          for (const [name, value] of data) {
+            console.log(name, ":", value);
+          }
+          console.log("form reset");
+          const test1 = document.getElementById("test1");
+          setTimeout(() => {
+            console.log("test1's value:", test1.value);
+            console.log("test1's att value:", test1.getAttribute("value"));
+          }, 0);
+        });
+
+        const inp = document.getElementById("test1");
+        inp.addEventListener("oc-input", function () {
+          console.log("Value of 1 schanged to:", inp.value);
+        });
+        const inp2a = document.getElementById("mytest");
+        inp2a.addEventListener("oc-input", function (e) {
+          console.log("INputty event fired", e.detail);
+        });
+        const inp2 = document.getElementById("input-fieldx");
+        inp2.addEventListener("input", function () {
+          console.log("Value of 2 schanged to:", inp2.value);
+        });
+
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", function () {
+          const input = form.querySelector('oc-text-input[name="oc-input"]');
+          input.setAttribute("value", "Hello!");
+          console.log("Value set to Hello!");
+        });
+
+        const btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click", function () {
+          const input = form.querySelector('oc-text-input[name="oc-input2"]');
+          input.value = "Hello too!";
+          console.log("Value set to Hello too!");
+        });
+
+        const btn2a = document.getElementById("btn2a");
+        btn2a.addEventListener("click", function () {
+          const input = form.querySelector("#input-field2");
+          input.value = "Hello too last!";
+          console.log("Value set to Hello too last!");
+        });
+
+        const btn3 = document.getElementById("btn3");
+        btn3.addEventListener("click", function () {
+          const input = form.querySelector('oc-text-input[name="oc-input2"]');
+          //const input = form.querySelector('#input-field2');
+          //input.setAttribute("disabled", "");
+          input.disabled = true;
+          console.log("Input 2 disabled");
+        });
+
+        const btn4 = document.getElementById("btn4");
+        btn4.addEventListener("click", function () {
+          const input = form.querySelector('oc-text-input[name="oc-input2"]');
+          //const input = form.querySelector('#input-field2');
+          //input.removeAttribute("disabled");
+          input.disabled = false;
+          console.log("Input 2 un-disabled");
+        });
+
+        const btn5 = document.getElementById("btn5");
+        btn5.addEventListener("click", function () {
+          const input = form.querySelector('oc-text-input[name="oc-input2"]');
+          //const input = form.querySelector('#input-field2');
+          input.setAttribute("value", "xx");
+          console.log("Input 2 value set to xx");
+        });
+
+        const btn6 = document.getElementById("btn6");
+        btn6.addEventListener("click", function () {
+          const quote = document.querySelector("oc-quote");
+          //const input = form.querySelector('#input-field2');
+          //quote.setAttribute("is-animated", "");
+          quote.isAnimated = true;
+          console.log("animated added");
+        });
+        const btn7 = document.getElementById("btn7");
+        btn7.addEventListener("click", function () {
+          const quote = document.querySelector("oc-quote");
+          //const input = form.querySelector('#input-field2');
+          //quote.removeAttribute("is-animated");
+          quote.isAnimated = false;
+          console.log("animated removed");
+        });
+
+        const btn8 = document.getElementById("btn8");
+        btn8.addEventListener("click", function () {
+          const ii = document.querySelector('oc-text-input[name="oc-input2"]');
+          //const input = form.querySelector('#input-field2');
+          //quote.removeAttribute("is-animated");
+          console.log("input2 disabled is:", ii.disabled);
+        });
+
+        const btn9 = document.getElementById("btn9");
+        btn9.addEventListener("click", function () {
+          const li = document.querySelector("#input-fieldy");
+          //const input = form.querySelector('#input-field2');
+          //quote.removeAttribute("is-animated");
+          //console.log("input2 disabled is:", ii.disabled);
+          if (!li.hasAttribute("required")) {
+            li.setAttribute("required", "");
+          } else {
+            li.removeAttribute("required");
+          }
+          console.log("inputy required set");
+        });
+
+        const btn10 = document.getElementById("btn10");
+        btn10.addEventListener("click", function () {
+          const ii = document.querySelector("#input-fieldyy");
+          //const input = form.querySelector('#input-field2');
+          //quote.removeAttribute("is-animated");
+          //console.log("input2 disabled is:", ii.disabled);
+          ii.setAttribute("required", "");
+          console.log("inputyy required set");
+        });
+
+        const btn11 = document.getElementById("btn11");
+        btn11.addEventListener("click", function () {
+          const ii = document.querySelector("#mytest28");
+          ii.removeAttribute("prefix");
+          console.log("inputyy prefix removed");
+        });
+
+        const btnl = document.getElementById("linkedin-button");
+        btnl.addEventListener("oc-click", function (e) {
+          e.preventDefault();
+          console.log("oc clcick");
+          console.log("t", e);
+        });
+
+        document.getElementById("myTable2").data = [
+          { Name: "Alice", Age: 33, Occupation: "Engineer" },
+          { Name: "Bob", Age: 23, Occupation: "Designer" },
+          { Name: "Charlie", Age: 35, Occupation: "Teacher" },
+        ];
+      });
+    </script>
+  </body>
+</html>

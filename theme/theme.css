@@ -1,0 +1,65 @@
+/*
+1. Define colors custom properties
+2. Assign color custom properties to properties where value is shared between light and dark mode
+3. Assign color custom properties to properties where value differs between light and dark mode
+4. Define other custom properties
+5. Define global styles
+*/
+
+/*  1. Define colors custom properties */
+
+:root {
+  --black: 31, 31, 31;
+  --white: 255, 255, 255;
+  --red: 220, 38, 38;
+
+  --amaranth-purple: 163, 11, 55;
+  --amaranth-purple-tint: 183, 31, 75;
+
+  --blue: 46, 134, 171;
+
+  --dark-green: 2, 54, 24;
+
+  --dun: 215, 208, 184;
+  --dun-tint: 235, 228, 204;
+
+  --old-rose: 204, 122, 130;
+  --old-rose-tint: 214, 132, 140;
+}
+
+/* 2. Assign colors to properties where value is same in both light and dark mode */
+
+:root {
+  --primary-background: var(--amaranth-purple);
+  --primary-text: var(--white);
+  --primary-highlight: var(--amaranth-purple-tint);
+
+  --secondary-background: var(--old-rose);
+  --secondary-text: var(--black);
+  --secondary-highlight: var(--old-rose-tint);
+}
+
+/* 3. Assign colors to properties where value differs between light and dark mode */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ui-background: var(--dun-tint);
+    --ui-text: var(--black);
+    --ui-highlight: var(--white);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-background: var(--black);
+    --ui-text: var(--white);
+    --ui-highlight: var(--dark-green);
+  }
+}
+
+/* 4. Define other custom properties */
+
+:root {
+  --border-radius-default: 4px;
+  --error-text: var(--red);
+}
